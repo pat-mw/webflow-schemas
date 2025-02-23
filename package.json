@@ -1,0 +1,48 @@
+{
+  "name": "webflow-schemas",
+  "description": "Webflow Schema Generator for dynamic data types from the Data API",
+  "version": "1.0.0",
+  "author": "pat-mw (https://github.com/pat-mw)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx tsx ./src/cli.ts",
+    "clean": "rimraf ./dist/ ./exec/",
+    "build": "npm run clean && tsc",
+    "test": "ava --verbose",
+    "bundle": "pkg . --out-dir ./exec/",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write ."
+  },
+  "keywords": [
+    "typescript",
+    "zod",
+    "webflow",
+    "schemas",
+    "pydantic",
+    "jsonschema"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "chalk-animation": "^2.0.3",
+    "commander": "^13.1.0",
+    "figlet": "^1.8.0",
+    "gradient-string": "^3.0.0",
+    "inquirer": "^12.4.2",
+    "nanospinner": "^1.2.2"
+  },
+  "devDependencies": {
+    "@types/chalk-animation": "^1.6.3",
+    "@types/figlet": "^1.7.0",
+    "@types/gradient-string": "^1.1.6",
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^22.13.5",
+    "ava": "^6.2.0",
+    "pkg": "^5.8.1",
+    "prettier": "^3.5.2",
+    "rimraf": "^6.0.1",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
+  }
+}

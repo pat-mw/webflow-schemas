@@ -1,0 +1,424 @@
+{
+    "id": "64d65811b2155c72fcc42990",
+    "displayName": "Events",
+    "singularName": "Event",
+    "slug": "event",
+    "createdOn": "2022-10-23T13:26:52.909Z",
+    "lastUpdated": "2024-12-15T15:54:25.927Z",
+    "fields": [
+      {
+        "id": "2c97847cdfaf7389d8182475d2663407",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Reference",
+        "slug": "event-venue",
+        "displayName": "Event Venue",
+        "helpText": "Please select the venue for the event. If it doesn't exist yet - please create it! Remember to add all fields, including latitude, longitude, logo and location links / address.",
+        "validations": {
+          "collectionId": "65dcae861710405f6e05b39d"
+        }
+      },
+      {
+        "id": "46b13fdde68c12b2d5c8b1722e701c1e",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Reference",
+        "slug": "event-category",
+        "displayName": "Event Category",
+        "helpText": "Main Category for this event. This is the top-level of filters for the event. tags can be used on top of these.",
+        "validations": {
+          "collectionId": "675efaef79874b35a7d94136"
+        }
+      },
+      {
+        "id": "f50fc5d7bef6d3679e933765f1f4034f",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "MultiReference",
+        "slug": "event-tags",
+        "displayName": "Event Tags",
+        "helpText": "Tags for this event to be shown on the events page.",
+        "validations": {
+          "collectionId": "665879d8aa2dc8a86509bced"
+        }
+      },
+      {
+        "id": "b387b25c73d9f723eed3d1cbf460ef84",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "PlainText",
+        "slug": "location",
+        "displayName": "Location",
+        "helpText": null,
+        "validations": {
+          "singleLine": true
+        }
+      },
+      {
+        "id": "88548c08bef09af8e0286fc8bebff79e",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Link",
+        "slug": "location-link-google-maps",
+        "displayName": "Location Link (Google Maps)",
+        "helpText": null,
+        "validations": null
+      },
+      {
+        "id": "6aaa08785b7583cd94746ca564584341",
+        "isEditable": true,
+        "isRequired": true,
+        "type": "DateTime",
+        "slug": "start-date-time",
+        "displayName": "Start Date/Time",
+        "helpText": null,
+        "validations": {
+          "format": "date-time"
+        }
+      },
+      {
+        "id": "3c31caeff9ed09ccd6f11662d224af73",
+        "isEditable": true,
+        "isRequired": true,
+        "type": "DateTime",
+        "slug": "end-date-time-2",
+        "displayName": "End Date/Time",
+        "helpText": null,
+        "validations": {
+          "format": "date-time"
+        }
+      },
+      {
+        "id": "07fb7f86a308ab4cf9adffd4ecc6dd37",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "PlainText",
+        "slug": "pre-event-summary",
+        "displayName": "Pre-event summary",
+        "helpText": "In a few sentences summarise the event (before it has happened)",
+        "validations": {
+          "singleLine": false,
+          "maxLength": 140
+        }
+      },
+      {
+        "id": "a2ff7f9634f793cc680081a3e811a31e",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "RichText",
+        "slug": "event-description-2",
+        "displayName": "Event Description",
+        "helpText": null,
+        "validations": null
+      },
+      {
+        "id": "4a4658aea98c1bddabe56d46060ae4b9",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Image",
+        "slug": "image",
+        "displayName": "Event Poster (square)",
+        "helpText": "Square event poster",
+        "validations": null
+      },
+      {
+        "id": "4489a164744af9e705514f3560ee73d6",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Image",
+        "slug": "event-poster-long-banner",
+        "displayName": "Event Poster (long banner)",
+        "helpText": null,
+        "validations": null
+      },
+      {
+        "id": "1423c3dd246e2fead5a9faf8b2d76c84",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Image",
+        "slug": "event-poster-landscape-a3-4",
+        "displayName": "Event Poster (landscape A3/4)",
+        "helpText": null,
+        "validations": null
+      },
+      {
+        "id": "2cb6bff698fe33811f9c197ad52bd730",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Image",
+        "slug": "event-poster-portrait-a3-4",
+        "displayName": "Event Poster (portrait A3/4)",
+        "helpText": null,
+        "validations": null
+      },
+      {
+        "id": "66e86d31562025ebedafdf57896313d0",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Link",
+        "slug": "external-ticket-link",
+        "displayName": "External Ticket Link",
+        "helpText": null,
+        "validations": null
+      },
+      {
+        "id": "b716687f5d29bd9479d81e0ae43752af",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Switch",
+        "slug": "upcoming",
+        "displayName": "Hide Event",
+        "helpText": "Hide event from upcoming events",
+        "validations": null
+      },
+      {
+        "id": "4020bcea3db1acaaafb294ec25d5eccd",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "PlainText",
+        "slug": "post-event-summary",
+        "displayName": "Post-event summary",
+        "helpText": "Summarise the event after it has happened.",
+        "validations": {
+          "singleLine": false,
+          "maxLength": 140
+        }
+      },
+      {
+        "id": "29ab8004f8e81b60ae9600c3763721ee",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "MultiImage",
+        "slug": "event-photos",
+        "displayName": "Event Photos",
+        "helpText": "Photos and images from the event that will be used in an event gallery",
+        "validations": null
+      },
+      {
+        "id": "7b2ba9dea0b0efa5c90dab61c6a6888e",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "RichText",
+        "slug": "recap",
+        "displayName": "Recap",
+        "helpText": "Write a post about the event, recapping highlights, and including key photos.",
+        "validations": null
+      },
+      {
+        "id": "c3b6e88aa22497ab07ab04f9a1a45fd5",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "MultiReference",
+        "slug": "event-artists",
+        "displayName": "Event Artists",
+        "helpText": null,
+        "validations": {
+          "collectionId": "64d65811b2155c72fcc429d6"
+        }
+      },
+      {
+        "id": "7040f4c6cd5a27e5d3bbce73dc1754b5",
+        "isEditable": true,
+        "isRequired": true,
+        "type": "Option",
+        "slug": "series-name",
+        "displayName": "Series Name",
+        "helpText": null,
+        "validations": {
+          "options": [
+            {
+              "name": "Origins Series",
+              "id": "9cc79aebc9fecfa2f21a8879a1a9aefa"
+            },
+            {
+              "name": "Unheard Series",
+              "id": "958a9046cb75cca9df2ab33c0342a866"
+            },
+            {
+              "name": "Other",
+              "id": "cb489e43b2c8bf1ae1c81e63af1c8769"
+            },
+            {
+              "name": "Focus Series",
+              "id": "0cecf8aa0931e2e330d1c13a8d6a8fe0"
+            },
+            {
+              "name": "Festival",
+              "id": "f31d20e0e9e227d58d0f2285111a5aca"
+            },
+            {
+              "name": "Amplify Your Music",
+              "id": "02db5d8d097abaf21351f1dbf3a7d272"
+            }
+          ]
+        }
+      },
+      {
+        "id": "6dd68cfebeee1ec379504340db92d301",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Color",
+        "slug": "lineup-background-colour",
+        "displayName": "Main Colour 1",
+        "helpText": null,
+        "validations": null
+      },
+      {
+        "id": "33b241690f3bfcbc76699f41e0e76a06",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Color",
+        "slug": "main-colour-2",
+        "displayName": "Main Colour 2",
+        "helpText": null,
+        "validations": null
+      },
+      {
+        "id": "0eea39d61d83c193921372fcd7b141f1",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Color",
+        "slug": "main-colour-3",
+        "displayName": "Main Colour 3",
+        "helpText": null,
+        "validations": null
+      },
+      {
+        "id": "5efff3d974e3f4ae747198165667151a",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Color",
+        "slug": "light-colour-1",
+        "displayName": "Light Colour 1",
+        "helpText": null,
+        "validations": null
+      },
+      {
+        "id": "266b3b555b1c76c99506ee682031eaae",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Color",
+        "slug": "light-colour-2",
+        "displayName": "Light Colour 2",
+        "helpText": null,
+        "validations": null
+      },
+      {
+        "id": "c2268ed7ff7f7676de35040307d3bfd4",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Color",
+        "slug": "dark-colour-for-text",
+        "displayName": "Dark Colour (for text)",
+        "helpText": null,
+        "validations": null
+      },
+      {
+        "id": "d448676d2b39cd206a2fca450ed2706b",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "VideoLink",
+        "slug": "event-recap-video",
+        "displayName": "Event Recap Video",
+        "helpText": null,
+        "validations": null
+      },
+      {
+        "id": "f07243e94eef3a1e22fea8fbaba72718",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Image",
+        "slug": "video-thumbnail",
+        "displayName": "Video Thumbnail",
+        "helpText": null,
+        "validations": null
+      },
+      {
+        "id": "efdb07749c65ce3d429e4bcec2229f87",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "PlainText",
+        "slug": "tickettailor-embed-code",
+        "displayName": "TicketTailor Event Code",
+        "helpText": "It can be found in the URL for the event on TicketTailor",
+        "validations": {
+          "singleLine": false
+        }
+      },
+      {
+        "id": "09977b6be6b4ac7505fb69d8b4985953",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "PlainText",
+        "slug": "posh-embed-source",
+        "displayName": "POSH embed source",
+        "helpText": "the number code (xx) in: src=\"https://embed.posh.vip/ticket-iframe/xxxxx/",
+        "validations": {
+          "singleLine": true
+        }
+      },
+      {
+        "id": "39bde03d19136bd3f98d45afae3c9411",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "PlainText",
+        "slug": "skiddle-embed-2",
+        "displayName": "Skiddle Event Embed Number",
+        "helpText": "should be 8 digits",
+        "validations": {
+          "singleLine": true
+        }
+      },
+      {
+        "id": "c4f759ade6dba582cac7952e41b93903",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Link",
+        "slug": "custom-event-page",
+        "displayName": "Custom Event Page",
+        "helpText": "If there is a custom event page outside of the CMS item page you would like to display",
+        "validations": null
+      },
+      {
+        "id": "b0440fb1146ecfa55cf093d218894406",
+        "isEditable": true,
+        "isRequired": false,
+        "type": "Reference",
+        "slug": "event-recap-blog-post",
+        "displayName": "Event Recap Blog Post",
+        "helpText": null,
+        "validations": {
+          "collectionId": "64d65811b2155c72fcc429b2"
+        }
+      },
+      {
+        "id": "5c8e36348ad67745b985f09f05e6e81e",
+        "isEditable": true,
+        "isRequired": true,
+        "type": "PlainText",
+        "slug": "name",
+        "displayName": "Name",
+        "helpText": null,
+        "validations": {
+          "maxLength": 256
+        }
+      },
+      {
+        "id": "540686ad53a54c3d61194fb2d063a4af",
+        "isEditable": true,
+        "isRequired": true,
+        "type": "PlainText",
+        "slug": "slug",
+        "displayName": "Slug",
+        "helpText": null,
+        "validations": {
+          "maxLength": 256,
+          "pattern": {},
+          "messages": {
+            "pattern": "Must be alphanumerical and not contain any spaces or special characters",
+            "maxLength": "Must be less than 256 characters"
+          }
+        }
+      }
+    ]
+  }
