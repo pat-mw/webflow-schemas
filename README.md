@@ -63,26 +63,26 @@ The tool can generate TypeScript definitions in two formats:
 export interface WebflowCollections {
     "Events": {
         meta: {
-        collectionId: string;
-        slug: string;
-        displayName: string;
+          collectionId: string;
+          slug: string;
+          displayName: string;
         };
         Row: {
-        name: string;
-        date: string;
-        venue: VenueReference;
-        description: string;
+          name: string;
+          date: string;
+          venue: VenueReference;
+          description: string;
         };
         refs: {
-        venue: WebflowCollections['Venues']['Row'];
+          venue: WebflowCollections['Venues']['Row'];
         };
         Relations: [
-        {
-        foreignCollection: "venues";
-        fieldName: "venue";
-        isMultiple: false;
-        isRequired: true;
-        }
+          {
+            foreignCollection: "venues";
+            fieldName: "venue";
+            isMultiple: false;
+            isRequired: true;
+          }
         ];
     },
     // ... other collections
