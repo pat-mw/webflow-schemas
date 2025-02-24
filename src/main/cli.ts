@@ -4,94 +4,86 @@ This CLI tool is used to fetch dynamic schemas from Webflows Data API.
 
 import chalk from 'chalk';
 import { Env } from "./env";
-import { createClient, type WebflowClient } from "./webflow/client";
-import { showSpinner, selectSite, showError, showSuccess, selectCollections } from './utils/cli-utils';
-import { type Collection } from 'webflow-api/api';
+import { WebflowClient } from "./webflow/client";
+import { showSuccess, showInfo } from './utils/cli-utils';
+import inquirer from 'inquirer';
+import path from 'path';
+import fs from 'fs/promises';
+import { StepContext } from './steps/base';
+import { InitializeStep } from './steps/initialize';
+import { SelectSiteStep } from './steps/select-site';
+import { SelectCollectionsStep } from './steps/select-collections';
+import { FetchSchemaStep } from './steps/fetch-schema';
+import { GenerateTypesStep } from './steps/generate-types';
 
 export class Cli {
-    private webflow!: WebflowClient;
-    private siteId?: string;
-    private selectedCollections: string[] = [];
+    private context: StepContext;
 
     constructor(private env: Env) {
-        this.env = env;
+        this.context = {
+            env: this.env
+        } as StepContext;
     }
 
-    private async initialize() {
-      // Initialize the webflow client
-        this.webflow = await createClient(this.env.WEBFLOW_ACCESS_TOKEN);
-    }
-
-    private async initializeSite(): Promise<void> {
+    private async shouldResyncSchema(): Promise<boolean> {
+        const schemaPath = path.join(process.cwd(), 'out', 'webflow.schema.json');
+        
         try {
-            // If site ID is provided in env, use it
-            if (this.env.WEBFLOW_SITE_ID) {
-                this.siteId = this.env.WEBFLOW_SITE_ID;
-                showSuccess(`Using site ID from environment: ${this.siteId}`);
-                return;
-            }
-
-            // Otherwise, fetch available sites
-            const spinner = await showSpinner('Fetching available sites...');
-            const result = await this.webflow.sites.list();
-            if (result.sites === undefined || result.sites.length === 0) {
-                throw new Error('No sites found in your account. Are you using the correct access token?');
-            }
-
-            spinner.success({ text: 'Sites fetched successfully' });
-
-            // Let user select a site
-            this.siteId = await selectSite(result.sites);
+            const fileContent = await fs.readFile(schemaPath, 'utf-8');
+            const schema = JSON.parse(fileContent);
+            const lastSynced = new Date(schema.last_synced);
+            const daysSinceSync = Math.floor((Date.now() - lastSynced.getTime()) / (1000 * 60 * 60 * 24));
             
-            showSuccess(`Selected site: ${this.siteId}`);
+            showInfo(`Found existing schema last synced ${daysSinceSync} days ago`);
+            
+            const answer = await inquirer.prompt({
+                type: 'confirm',
+                name: 'resync',
+                message: `Would you like to re-sync from Webflow API?`,
+                default: daysSinceSync > 7
+            });
+
+            return answer.resync;
         } catch (error) {
-            showError(error instanceof Error ? error.message : 'Unknown error occurred');
-            process.exit(1);
+            showInfo('No existing schema found - will fetch from Webflow API');
+            return true;
         }
     }
 
-    private async fetchAndSelectCollections(): Promise<void> {
-        try {
-            const spinner = await showSpinner('Fetching collections...');
-            
-            if (!this.siteId) {
-                throw new Error('Site ID not initialized');
-            }
+    private async syncSchema(): Promise<void> {
+        const steps = [
+            new InitializeStep(),
+            new SelectSiteStep(),
+            new SelectCollectionsStep(),
+            new FetchSchemaStep()
+        ];
 
-            const response = await this.webflow.collections.list(this.siteId);
-            const collections = response.collections as Collection[];
-            
-            if (!collections || collections.length === 0) {
-                throw new Error('No collections found in this site');
-            }
-
-            spinner.success({ text: `Found ${collections.length} collections` });
-
-            // Let user select collections
-            const selectedCollections = await selectCollections(collections);
-            
-            if (selectedCollections.length === 0) {
-                throw new Error('No collections selected');
-            }
-
-            showSuccess(`Selected ${selectedCollections.length} collections to sync`);
-            
-            // Store selected collections for later use
-            this.selectedCollections = selectedCollections;
-        } catch (error) {
-            showError(error instanceof Error ? error.message : 'Unknown error occurred');
-            process.exit(1);
+        for (const step of steps) {
+            await step.execute(this.context);
         }
+        
+        showSuccess('Schema sync completed successfully');
+    }
+
+    private async generateTypes(): Promise<void> {
+        showInfo('Generating TypeScript types from schema...');
+        const generateStep = new GenerateTypesStep();
+        await generateStep.execute(this.context);
     }
 
     async run() {
         console.log(chalk.blue('\n🌊 Webflow Schema Fetcher\n'));
-        await this.initialize();
-        await this.initializeSite();
-        await this.fetchAndSelectCollections();
+
+        const shouldSync = await this.shouldResyncSchema();
         
-        // More functionality will be added here
-        showSuccess('CLI initialized successfully');
+        if (shouldSync) {
+            await this.syncSchema();
+        } else {
+            showSuccess('Using existing schema file');
+        }
+
+        // Always generate types regardless of schema sync
+        await this.generateTypes();
     }
 }
 

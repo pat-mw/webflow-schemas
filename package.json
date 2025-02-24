@@ -14,6 +14,15 @@
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write ."
   },
+  "ava": {
+    "extensions": [
+      "ts",
+      "tsx"
+    ],
+    "rewritePaths": {
+      "src/": "build/"
+    }
+  },
   "keywords": [
     "typescript",
     "zod",
@@ -31,11 +40,13 @@
     "figlet": "^1.8.0",
     "gradient-string": "^3.0.0",
     "inquirer": "^12.4.2",
+    "json-schema-to-typescript": "^15.0.4",
     "nanospinner": "^1.2.2",
     "webflow-api": "^3.1.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@ava/typescript": "^5.0.0",
     "@types/chalk-animation": "^1.6.3",
     "@types/figlet": "^1.7.0",
     "@types/gradient-string": "^1.1.6",

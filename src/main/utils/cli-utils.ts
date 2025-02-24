@@ -1,8 +1,7 @@
 import chalk from 'chalk';
 import inquirer from 'inquirer';
 import { createSpinner } from 'nanospinner';
-import { type Site } from 'webflow-api/api';
-import { type Collection } from 'webflow-api/api';
+import { type Site, type Collection } from 'webflow-api/api';
 
 export const sleep = (ms = 2000): Promise<void> => 
   new Promise((resolve) => setTimeout(resolve, ms));
@@ -33,6 +32,11 @@ export function showError(message: string) {
 }
 
 export function showSuccess(message: string) {
+  console.log(chalk.green(`✓ ${message}`));
+}
+
+export function showInfo(message: string) {
+  console.log(chalk.blue(`ℹ ${message}`));
 }
 
 export async function selectCollections(collections: Collection[]) {
