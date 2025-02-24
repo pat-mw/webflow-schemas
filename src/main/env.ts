@@ -9,7 +9,7 @@ const envSchema = z.object({
     // Required fields
     WEBFLOW_ACCESS_TOKEN: z.string({
         required_error: "WEBFLOW_ACCESS_TOKEN is required",
-    }),
+    }).min(1, "WEBFLOW_ACCESS_TOKEN is required"),
     WEBFLOW_SITE_ID: z.string().optional(),
     
     // Optional fields with defaults
