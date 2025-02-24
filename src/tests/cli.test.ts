@@ -1,12 +1,11 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { Cli } from '../src/main/cli';
-import { Env } from '../src/main/env';
+import { Cli } from '@/main/cli';
+import { Env } from '@/main/env';
 import fs from 'fs/promises';
 import inquirer from 'inquirer';
-import { WebflowClient } from '../src/main/webflow/client';
 
 // Mock the WebflowClient module
-vi.mock('../src/main/webflow/client', () => ({
+vi.mock('@/main/webflow/client', () => ({
   WebflowClient: vi.fn(),
   createClient: vi.fn().mockResolvedValue({
     sites: {
@@ -133,7 +132,7 @@ describe('Cli', () => {
       vi.mocked(fs.readFile).mockRejectedValueOnce(new Error('File not found'));
 
       // Mock API error
-      const mockWebflowClient = await import('../src/main/webflow/client');
+      const mockWebflowClient = await import('../main/webflow/client');
       vi.mocked(mockWebflowClient.createClient).mockRejectedValueOnce(
         new Error('API Error')
       );
