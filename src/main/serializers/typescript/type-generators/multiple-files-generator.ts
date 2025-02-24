@@ -29,19 +29,10 @@ export class MultipleFilesGenerator {
             
             const { metaSchema, rowSchema } = this.schemaConverter.splitSchema(collection, collectionId);
             
-            const metaType = await compile(metaSchema, typeNames.meta, {
-                bannerComment: '',
-                style: { singleQuote: true, semi: true, printWidth: 100, tabWidth: 2 }
-            });
-
             const rowType = await compile(rowSchema, typeNames.row, {
                 bannerComment: '',
                 style: { singleQuote: true, semi: true, printWidth: 100, tabWidth: 2 }
             });
-
-            const processedMetaType = metaType
-                .replace('export ', '')
-                .replace(/interface \w+/, `interface ${typeNames.meta}`);
 
             const processedRowType = rowType
                 .replace('export ', '')
@@ -49,10 +40,15 @@ export class MultipleFilesGenerator {
 
             const fileContent = 
                 `import { WebflowCollections } from '../webflow.types';\n\n` +
-                `export ${processedMetaType}\n\n` +
+                `export const ${typeNames.meta} = {\n` +
+                `  _collectionId: '${collectionId}',\n` +
+                `  _name: '${collection.name}',\n` +
+                `  _slug: '${slug}'\n` +
+                `} as const;\n\n` +
+                `export type ${typeNames.meta}Type = typeof ${typeNames.meta};\n\n` +
                 `export ${processedRowType}\n\n` +
                 `export interface ${typeNames.base}Item {\n` +
-                `  meta: ${typeNames.meta};\n` +
+                `  meta: ${typeNames.meta}Type;\n` +
                 `  row: ${typeNames.row};\n` +
                 `}\n`;
 
