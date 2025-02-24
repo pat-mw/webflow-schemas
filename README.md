@@ -224,7 +224,7 @@ Contributions are welcome! The project is designed to be extensible, particularl
 
 ```typescript
 interface Serializer {
-serialize(options: SerializerOptions): Promise<void>;
+  serialize(options: SerializerOptions): Promise<void>;
 }
 ```
 2. Add your serializer to the `src/main/serializers` directory
@@ -243,6 +243,12 @@ serialize(options: SerializerOptions): Promise<void>;
 - [ ] Integration with build tools (webpack, vite, etc.)
 - [ ] Support for Webflow E-commerce types
 - [ ] Support for Form submission types
+- [ ] Two-way Schema Sync (?)
+  - Sync schema definitions from external sources to Webflow where Webflow CMS should mirror an external data source. This may be possible though the Data API endpoints for updating and creating collections.
+  - Support for Drizzle schema definitions
+  - Support for Supabase database.types.ts
+  - Enable schema version control and migration tracking
+  - Bidirectional sync with popular ORMs and type systems
 
 ## License
 
