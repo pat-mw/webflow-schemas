@@ -6,7 +6,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "npx tsx ./src/cli.ts",
+    "start": "npx tsx ./src/index.ts",
     "clean": "rimraf ./dist/ ./exec/",
     "build": "npm run clean && tsc",
     "test": "ava --verbose",
@@ -27,10 +27,13 @@
     "chalk": "^5.4.1",
     "chalk-animation": "^2.0.3",
     "commander": "^13.1.0",
+    "dotenv": "^16.4.1",
     "figlet": "^1.8.0",
     "gradient-string": "^3.0.0",
     "inquirer": "^12.4.2",
-    "nanospinner": "^1.2.2"
+    "nanospinner": "^1.2.2",
+    "webflow-api": "^3.1.0",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/chalk-animation": "^1.6.3",
