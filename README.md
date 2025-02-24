@@ -116,7 +116,6 @@ This will automatically resolve the reference and multiple reference fields.
 ### 2. Multiple Files Output
 
 ```typescript
-typescript
 // collections/events.ts
 export interface EventsMeta {
     collectionId: string;
