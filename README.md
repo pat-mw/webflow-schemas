@@ -2,6 +2,8 @@
 
 A CLI tool for generating type-safe schemas from Webflow CMS collections. This tool helps bridge the gap between Webflow's dynamic content and type-safe development environments by automatically generating TypeScript types from your Webflow collections.
 
+> ⚠️ **Note**: This project is currently experimental and likely contains bugs. Contributions and feedback are warmly welcomed!
+
 ![CLI Demo](lib/demo.gif)
 
 ## Features
