@@ -60,17 +60,6 @@ The tool can generate TypeScript definitions in two formats:
 ### 1. Single File Output (`webflow.types.ts`)
 
 ```typescript
-/
-Webflow Collections Type System
-------------------------------
-Usage:
-1. For collection rows (content):
-type Events = Collection<'Events'>
-2. For collection metadata:
-type EventsMeta = CollectionMeta<'Events'>
-3. For collection relationships:
-type EventsRelations = CollectionRelations<'Events'>
-/
 export interface WebflowCollections {
     "Events": {
         meta: {
@@ -103,6 +92,18 @@ export type CollectionMeta<T extends keyof WebflowCollections> = WebflowCollecti
 export type CollectionRelations<T extends keyof WebflowCollections> = WebflowCollections[T['Relations'];
 ```
 
+Usage:
+1. For collection rows (content):
+type Events = Collection<'Events'>
+2. For collection metadata:
+type EventsMeta = CollectionMeta<'Events'>
+3. For collection relationships:
+type EventsRelations = CollectionRelations<'Events'>
+
+You can also access nested types directly:
+type EventTags = Collection<'Events'>['event-tags']
+
+This will automatically resolve the reference and multiple reference fields.
 
 ### 2. Multiple Files Output
 
@@ -224,6 +225,11 @@ serialize(options: SerializerOptions): Promise<void>;
 
 ## Future Enhancements
 
+- [ ] Convert to npx-runnable CLI executable
+  - Enable installation via `npx @webflow/schema-cli`
+  - Add configurable output paths via CLI arguments
+  - Support for custom configuration files (webflow.config.js)
+  - Make paths dynamic and configurable
 - [ ] Support for Zod schema generation
 - [ ] Support for Python/Pydantic models
 - [ ] Automatic schema sync on Webflow collection changes
