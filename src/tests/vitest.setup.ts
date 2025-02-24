@@ -1,4 +1,3 @@
-/// <reference types="vitest" />
 import { vi, beforeEach } from 'vitest';
 import dotenv from 'dotenv';
 

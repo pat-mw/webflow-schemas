@@ -1,4 +1,4 @@
-import { WebflowClient, createClient } from "@/main/webflow/client";
+import { createClient } from "@/main/webflow/client";
 import { Step, StepContext } from "./base";
 
 export class InitializeStep implements Step {

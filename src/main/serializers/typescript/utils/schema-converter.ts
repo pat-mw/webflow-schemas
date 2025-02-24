@@ -59,7 +59,7 @@ export class SchemaConverter {
             .join(' ');
     }
 
-    private getJsonSchemaType(field: WebflowField, collectionId: string): any {
+    private getJsonSchemaType(field: WebflowField, _collectionId: string): any {
         if (field.type === 'Reference' && field.validations?.collectionId) {
             const referencedCollectionName = this.referenceManager.getCollectionName(field.validations.collectionId);
             if (referencedCollectionName) {

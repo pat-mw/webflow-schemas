@@ -5,7 +5,7 @@ import path from 'path';
 import { TypeScriptSerializer } from '../serializers/typescript';
 
 export class GenerateTypesStep implements Step {
-    async execute(context: StepContext): Promise<void> {
+    async execute(_context: StepContext): Promise<void> {
         try {
             const spinner = await showSpinner('Reading schema file...');
             
