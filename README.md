@@ -4,7 +4,11 @@ A CLI tool for generating type-safe schemas from Webflow CMS collections. This t
 
 > ⚠️ **Note**: This project is currently experimental and likely contains bugs. Contributions and feedback are warmly welcomed!
 
-![CLI Demo](lib/demo.gif)
+*CLI Demo*
+![CLI Demo](lib/cli.gif)
+
+*Usage Example*
+![Usage Example](lib/usage.gif)
 
 ## Features
 
