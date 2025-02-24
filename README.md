@@ -94,14 +94,22 @@ export type CollectionRelations<T extends keyof WebflowCollections> = WebflowCol
 
 Usage:
 1. For collection rows (content):
+```typescript
 type Events = Collection<'Events'>
+```
 2. For collection metadata:
+```typescript
 type EventsMeta = CollectionMeta<'Events'>
+```
 3. For collection relationships:
+```typescript
 type EventsRelations = CollectionRelations<'Events'>
+```
 
 You can also access nested types directly:
+```typescript
 type EventTags = Collection<'Events'>['event-tags']
+```
 
 This will automatically resolve the reference and multiple reference fields.
 
