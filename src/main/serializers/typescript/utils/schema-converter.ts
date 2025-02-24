@@ -152,12 +152,16 @@ export class SchemaConverter {
             case 'Link':
             case 'Color':
                 return { type: 'string' };
+            case 'DateTime':
+                return { 
+                    type: 'string', 
+                    format: 'date-time',
+                    tsType: 'Date'
+                };
             case 'Number':
                 return { type: 'number' };
             case 'Switch':
                 return { type: 'boolean' };
-            case 'DateTime':
-                return { type: 'string', format: 'date-time' };
             case 'Image':
                 return {
                     type: 'object',
