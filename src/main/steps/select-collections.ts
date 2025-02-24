@@ -21,7 +21,7 @@ export class SelectCollectionsStep implements Step {
             spinner.success({ text: `Found ${collections.length} collections` });
             const selectedCollections = await selectCollections(collections);
             
-            if (selectedCollections.length === 0) {
+            if (!selectedCollections || selectedCollections.length === 0) {
                 throw new Error('No collections selected');
             }
 
@@ -29,7 +29,7 @@ export class SelectCollectionsStep implements Step {
             context.selectedCollections = selectedCollections;
         } catch (error) {
             showError(error instanceof Error ? error.message : 'Unknown error occurred');
-            process.exit(1);
+            throw error; // Always throw in both test and production
         }
     }
 } 

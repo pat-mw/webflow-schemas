@@ -11,6 +11,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*", "temp/example-clis"],
+  "include": ["src/**/*", "temp/example-clis", "tests/cli.test.ts", "tests/typescript-serializer.test.ts"],
   "exclude": ["node_modules"]
 }
