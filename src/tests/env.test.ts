@@ -96,5 +96,10 @@ describe('Environment Validation', () => {
     expect(typeof env.WEBFLOW_ACCESS_TOKEN).toBe('string');
     expect(['development', 'production', 'test']).toContain(env.NODE_ENV);
     expect(typeof env.WEBFLOW_SITE_ID === 'string' || env.WEBFLOW_SITE_ID === undefined).toBe(true);
+
+    // typed env checks
+    expect(typeof _typedEnv.WEBFLOW_ACCESS_TOKEN).toBe('string');
+    expect(['development', 'production', 'test']).toContain(_typedEnv.NODE_ENV);
+    expect(typeof _typedEnv.WEBFLOW_SITE_ID === 'string' || _typedEnv.WEBFLOW_SITE_ID === undefined).toBe(true);
   });
 }); 

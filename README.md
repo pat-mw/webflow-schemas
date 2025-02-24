@@ -19,23 +19,25 @@ A CLI tool for generating type-safe schemas from Webflow CMS collections. This t
 ## Installation
 
 1. Clone the repository
-2. Install dependencies
-
 ```bash
-npm install
+git clone https://github.com/pat-mw/webflow-schemas.git
 ```
 
-## Usage
-
-3. Run the CLI
-
+2. Install dependencies
 ```bash
-npm start
+cd webflow-schemas
+pnpm install
 ```
 
 ## Usage
 
 1. Create a `.env` file with your Webflow credentials:
+
+```bash
+touch .env
+```
+
+2. Add your Webflow credentials to the `.env` file:
 
 ```env
 WEBFLOW_ACCESS_TOKEN=your-access-token
@@ -45,7 +47,7 @@ WEBFLOW_SITE_ID=your-site-id # Optional
 2. Run the CLI:
 
 ```bash
-npm start
+pnpm start
 ```
 
 3. Follow the interactive prompts to:

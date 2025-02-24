@@ -2,9 +2,7 @@
 This CLI tool is used to fetch dynamic schemas from Webflows Data API.
 */
 
-import chalk from 'chalk';
 import { Env } from './env';
-import { WebflowClient } from './webflow/client';
 import { showSuccess, showInfo } from './utils/cli-utils';
 import inquirer from 'inquirer';
 import path from 'path';

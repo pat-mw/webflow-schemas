@@ -1,5 +1,5 @@
 import { Serializer, SerializerOptions } from '@/main/serializers/base/serializer';
-import { showSpinner, showSuccess, showError, showInfo } from '@/main/utils/cli-utils';
+import { showError, showInfo } from '@/main/utils/cli-utils';
 import inquirer from 'inquirer';
 import { SingleFileGenerator } from './type-generators/single-file-generator';
 import { MultipleFilesGenerator } from './type-generators/multiple-files-generator';
