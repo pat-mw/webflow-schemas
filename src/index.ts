@@ -1,9 +1,22 @@
-import { validateEnv } from './env';
-import { Cli } from './cli';
+#!/usr/bin/env node
+import { program } from 'commander';
+import { validateEnv } from './main/env';
+import { Cli } from './main/cli';
 
-// Validate environment variables
-const env = validateEnv();
+async function main() {
+    try {
+        const env = validateEnv();
+        const cli = new Cli(env);
+        await cli.run();
+    } catch (error) {
+        console.error('Failed to start CLI:', error);
+        process.exit(1);
+    }
+}
 
-// Initialise CLI
-const cli = new Cli(env);
-cli.run();
+program
+    .version('1.0.0')
+    .description('Webflow Schema Fetcher CLI')
+    .action(main);
+
+program.parse();
